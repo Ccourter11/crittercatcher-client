@@ -4,7 +4,7 @@ import { Register } from "./auth/register"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
 
-export function OneLeftFoot() {
+export function CritterCatcher() {
     return <>
         <Route render={() => {
             if (localStorage.getItem('olf_token')) {
