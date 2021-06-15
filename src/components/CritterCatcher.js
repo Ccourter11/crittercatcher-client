@@ -1,6 +1,6 @@
 import { Route, Redirect } from "react-router-dom"
-import { Login } from "./auth/login"
-import { Register } from "./auth/register"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
 
@@ -12,7 +12,6 @@ export function CritterCatcher() {
                     <>
                         <NavBar />
                         <ApplicationViews />
-                        <Footer />
                     </>
                 )
             } else {
