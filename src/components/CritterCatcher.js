@@ -7,7 +7,7 @@ import { ApplicationViews } from "./ApplicationViews"
 export function CritterCatcher() {
     return <>
         <Route render={() => {
-            if (localStorage.getItem('olf_token')) {
+            if (localStorage.getItem('crittercatcher_token')) {
                 return (
                     <>
                         <NavBar />

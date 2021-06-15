@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
+import { useHistory } from "react-router"
 
 export const Register = (props) => {
     const firstName = React.createRef()
@@ -10,6 +11,7 @@ export const Register = (props) => {
     const password = React.createRef()
     const verifyPassword = React.createRef()
     const passwordDialog = React.createRef()
+    const history = useHistory()
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -35,7 +37,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("crittercatcher_token", res.token)
-                        props.history.push("/")
+                        history.push("/")
                     }
                 })
         } else {

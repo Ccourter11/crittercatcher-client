@@ -1,12 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
+import { useHistory } from "react-router"
 
 
 export const Login = props => {
     const email = React.createRef()
     const password = React.createRef()
     const invalidDialog = React.createRef()
+    const history = useHistory()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -25,8 +27,8 @@ export const Login = props => {
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem( "crittercatcher_token", res.token )
-                    props.history.push("/")
+                    localStorage.setItem( "critter-catcher_token", res.token )
+                    history.push("/")
                 }
                 else {
                     invalidDialog.current.showModal()
