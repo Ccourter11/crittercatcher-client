@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {CritterCatcher} from './components/CritterCatcher';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+    <CritterCatcher />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
