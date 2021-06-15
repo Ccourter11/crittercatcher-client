@@ -8,7 +8,7 @@ import { Logout } from "./auth/LogOut"
 export function CritterCatcher() {
     return <>
         <Route render={() => {
-            if (localStorage.getItem('crittercatcher_token')) {
+            if (localStorage.getItem('critter-catcher_token')) {
                 return (
                     <>
                         <NavBar />
