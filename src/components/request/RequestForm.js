@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 export const RequestForm = () => {
     const history = useHistory()
-    const {  request, categories, getCategories, getRequests, createRequests, getRequestById, editRequests } = useContext(RequestContext)
+    const {  request, categories, getCategories, createRequests, getRequestById, editRequests } = useContext(RequestContext)
     const {requestId} = useParams()
 
     /*
@@ -32,16 +32,16 @@ export const RequestForm = () => {
 
     useEffect(() => {
         if (requestId) {
-            getRequestById(requestId).then(request => {
-                setCurrentRequest({
+            getRequestById(requestId).then(
+                setCurrentRequest(request => ({ 
+                    title: request.title,
                     description: request.description,
                     location: request.location,
-                    title: request.title,
                     date: request.date,
-                    category: request.category.id,
+                    category: request.category,
                     requestor: request.requestor
                 })
-            })
+            ))
         }
     }, [requestId])
 
