@@ -5,68 +5,71 @@ export const RequestContext = createContext()
 export const RequestProvider = (props) => {
 
     const [requests, setRequests] = useState([])
-    // const [categories, setCategories] = useState([])
+    const [request, setRequest ] = useState({})
+    const [categories, setCategories] = useState([])
+    
 
 
     const getRequests = () => {
-        return fetch("http://localhost:8088/requests", {
+        return fetch("http://localhost:8000/requests", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             }
         })
         .then(response => response.json())
-        .then(requests => setRequests(requests))
+        .then(setRequests)
     }
 
-    const createRequests = requests => {
-        return fetch("http://localhost:8088/requests", {
+    const createRequests = request => {
+        return fetch("http://localhost:8000/requests", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             },
-            body: JSON.stringify(requests)
+            body: JSON.stringify(request)
         })
         .then(getRequests)
       }
 
-    const editRequests = (requests) => {
-        return fetch(`http://localhost:8000/requests/${requests.id}`, { 
+    const editRequests = (request) => {
+        return fetch(`http://localhost:8000/requests/${request.id}`, { 
             method: "PUT",
             headers:{
               "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`,
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(requests)
+            body: JSON.stringify(request)
         })
             .then(getRequests)
     }  
 
 
-    const getRequestType = () => {
+    const getCategories = () => {
         return fetch("http://localhost:8000/categories", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             }
          })
             .then(response => response.json())
-            .then(setRequests)
+            .then(setCategories)
     }
 
-    const getRequest = (requestId) => {
-        return fetch(`http://localhost:8000/requests/${requestId}`, {
+    const getRequestById = (requestId) => {
+        return fetch(`http://localhost:8000/requests/${requestId}`, { 
             headers:{
-                "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
+              "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             }
         })
-        .then(res => res.json())
+            .then(res => res.json())
+            .then(setRequest)
     }
 
 
     return (
         <RequestContext.Provider value={{
           
-          requests, createRequests, getRequests, editRequests, getRequestType, getRequest
+          request,requests,categories, createRequests, getRequests, editRequests, getCategories, getRequestById
         }}>
           {props.children}
         </RequestContext.Provider>
