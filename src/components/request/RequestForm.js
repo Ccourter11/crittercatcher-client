@@ -41,7 +41,7 @@ export const RequestForm = () => {
                 })
             })
         }
-    }, [gameId])
+    }, [requestId])
 
     /*
         REFACTOR CHALLENGE START
@@ -52,29 +52,27 @@ export const RequestForm = () => {
         One hint: [event.target.name]
     */
 
-    const changeGameState = (event) => {
-        const newGameState = { ...currentGame } 
-        newGameState[event.target.name] = event.target.value
-        setCurrentGame(newGameState) 
+    const changeRequestState = (event) => {
+        const newRequestState = { ...currentRequest} 
+        newRequestState[event.target.name] = event.target.value
+        setCurrentRequest(newRequestState) 
     }
     /* REFACTOR CHALLENGE END */
 
     return (
-        <form className="gameForm">
-            <h2 className="gameForm__title">Register New Game</h2>
+        <form className="requestForm">
+            <h2 className="requestForm__title">Create New Request</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="title">Title: </label>
                     <input type="text" name="title" required autoFocus className="form-control"
-                        value={currentGame.title}
-                        onChange={changeGameState}
+                        value={currentRequest.title}
+                        onChange={changeRequestState}
                     />
                 </div>
             </fieldset>
 
-            {/* You create the rest of the input fields for each game property */}
-
-            
+{/*                       
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="numberOfPlayers">Number of players: </label>
@@ -103,7 +101,7 @@ export const RequestForm = () => {
                     onChange={changeGameState}
                     value={currentGame.maker}/>
                 </div>
-            </fieldset>
+            </fieldset> */}
 
             <fieldset>
                 <div className="form-group">

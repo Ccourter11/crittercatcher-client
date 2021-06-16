@@ -44,7 +44,7 @@ export const RequestProvider = (props) => {
 
 
     const getRequestType = () => {
-        return fetch("http://localhost:8000/category", {
+        return fetch("http://localhost:8000/categories", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             }
