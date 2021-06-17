@@ -32,37 +32,30 @@ export const RequestForm = () => {
 
     useEffect(() => {
         if (requestId) {
-            getRequestById(requestId).then(
-                setCurrentRequest(request => ({ 
+            getRequestById(requestId)
+            .then(request => {
+                setCurrentRequest({ 
                     title: request.title,
                     description: request.description,
                     location: request.location,
                     date: request.date,
                     category: request.category,
                     requestor: request.requestor
-                })
-            ))
+                })}
+            )
         }
     }, [requestId])
 
-    /*
-        REFACTOR CHALLENGE START
-        Can you refactor this code so that all property
-        state changes can be handled with a single function
-        instead of five functions that all, largely, do
-        the same thing?
-        One hint: [event.target.name]
-    */
 
     const changeRequestState = (event) => {
         const newRequestState = { ...currentRequest} 
         newRequestState[event.target.name] = event.target.value
         setCurrentRequest(newRequestState) 
     }
-    /* REFACTOR CHALLENGE END */
 
     return (
         <form className="requestForm">
+            {console.log(currentRequest)}
             <h2 className="requestForm__title">Create New Request</h2>
             <fieldset>
                 <div className="form-group">

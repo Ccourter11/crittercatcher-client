@@ -29,7 +29,10 @@ export const RequestProvider = (props) => {
             },
             body: JSON.stringify(request)
         })
-        .then(getRequests)
+        .then(res => res.json())
+        .then(post => {
+            return request
+        })
       }
 
     const editRequests = (request) => {
@@ -62,7 +65,6 @@ export const RequestProvider = (props) => {
             }
         })
             .then(res => res.json())
-            .then(setRequest)
     }
 
 

@@ -3,7 +3,7 @@ import { RequestContext } from "./RequestProvider.js"
 import { useHistory } from "react-router-dom"
 
 export const RequestList = () => {
-    const { requests, getRequests } = useContext(RequestContext)
+    const { request, requests, getRequests } = useContext(RequestContext)
 
     const history = useHistory()
 
@@ -15,10 +15,10 @@ export const RequestList = () => {
         <article className="requests">
             <button className="btn btn-2 btn-sep icon-create"
                             onClick={() => {
-                                history.push({ pathname: "/requests/new" })
+                                history.push({ pathname: `/requests/new` })
                             }}
                         >New Request</button>
-                        {console.log(requests)}
+                        
             {
                 requests.map(request => {
                     return <section key={`request--${request.id}`} className="request">
