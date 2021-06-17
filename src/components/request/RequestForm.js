@@ -23,8 +23,8 @@ export const RequestForm = () => {
     })
 
     /*
-        Get game types on initialization so that the <select>
-        element presents game type choices to the user.
+        Get category type on initialization so that the <select>
+        element presents category size choices to the user.
     */
     useEffect(() => {
         getCategories()
