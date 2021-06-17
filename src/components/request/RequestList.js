@@ -3,9 +3,16 @@ import { RequestContext } from "./RequestProvider.js"
 import { useHistory } from "react-router-dom"
 
 export const RequestList = () => {
-    const { request, requests, getRequests } = useContext(RequestContext)
+    const { request, requests, getRequests, deleteRequest } = useContext(RequestContext)
 
     const history = useHistory()
+
+    const handleDelete = () => {
+        deleteRequest(request.id)
+        .then(() => {
+        history.push("/requests")
+      })
+    }
 
     useEffect(() => {
         getRequests()
@@ -22,14 +29,16 @@ export const RequestList = () => {
             {
                 requests.map(request => {
                     return <section key={`request--${request.id}`} className="request">
+                        
+                        <div className="request__title">Title: {request.title}</div>
+                        <div className="request__description">Description: {request.description} </div>
+                        <div className="request__location">Location: {request.location}</div>
                         <div className="request__edit">
                              <button className="btn btn-3"
                                     onClick={() => history.push(`/requests/${request.id}/edit`)}
                                     >Edit</button>
                         </div>
-                        <div className="request__title">Title: {request.title}</div>
-                        <div className="request__description">Description: {request.description} </div>
-                        <div className="request__location">Location: {request.location}</div>
+                        <button onClick={handleDelete}>Delete Request</button>
                         
                     </section>
                 })

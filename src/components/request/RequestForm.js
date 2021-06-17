@@ -46,10 +46,11 @@ export const RequestForm = () => {
         }
     }, [requestId])
 
-
+    //when something changes, save it with 
     const changeRequestState = (event) => {
         const newRequestState = { ...currentRequest} 
         newRequestState[event.target.name] = event.target.value
+        // update state
         setCurrentRequest(newRequestState) 
     }
 
@@ -148,6 +149,7 @@ export const RequestForm = () => {
                         // maker: currentGame.maker,
                         title: currentRequest.title,
                         description: currentRequest.description,
+                        date: currentRequest.date,
                         location: currentRequest.location,
                         categoryId: parseInt(currentRequest.categoryId)
                     }

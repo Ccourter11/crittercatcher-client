@@ -30,9 +30,7 @@ export const RequestProvider = (props) => {
             body: JSON.stringify(request)
         })
         .then(res => res.json())
-        .then(post => {
-            return request
-        })
+        .then(getRequests)
       }
 
     const editRequests = (request) => {
@@ -67,11 +65,21 @@ export const RequestProvider = (props) => {
             .then(res => res.json())
     }
 
+    const deleteRequest = (requestId) => {
+        return fetch(`http://localhost:8000/requests/${requestId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
+            }
+        })
+            .then(getRequests)
+    }
+
 
     return (
         <RequestContext.Provider value={{
           
-          request,requests,categories, createRequests, getRequests, editRequests, getCategories, getRequestById
+          request,requests,categories, createRequests, getRequests, editRequests, getCategories, getRequestById, deleteRequest
         }}>
           {props.children}
         </RequestContext.Provider>
