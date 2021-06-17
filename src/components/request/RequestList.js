@@ -6,6 +6,7 @@ export const RequestList = () => {
     const { request, requests, getRequests, deleteRequest } = useContext(RequestContext)
 
     const history = useHistory()
+    // const {requestId} = useParams()
 
     const handleDelete = () => {
         deleteRequest(request.id)
