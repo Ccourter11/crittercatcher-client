@@ -3,11 +3,12 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
+import { Logout } from "./auth/LogOut"
 
 export function CritterCatcher() {
     return <>
         <Route render={() => {
-            if (localStorage.getItem('crittercatcher_token')) {
+            if (localStorage.getItem('critter-catcher_token')) {
                 return (
                     <>
                         <NavBar />
@@ -24,6 +25,9 @@ export function CritterCatcher() {
             </Route>
             <Route path="/register">
                 <Register />
+            </Route>
+            <Route path="/logout">
+                <Logout />
             </Route>
             
         

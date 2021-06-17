@@ -36,7 +36,7 @@ export const Register = (props) => {
                 .then(res => res.json())
                 .then(res => {
                     if ("token" in res) {
-                        localStorage.setItem("crittercatcher_token", res.token)
+                        localStorage.setItem("critter-catcher_token", res.token)
                         history.push("/")
                     }
                 })
