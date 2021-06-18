@@ -1,0 +1,22 @@
+.requestForm {
+    display: grid;
+    justify-content: center;
+    border: 1.5px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+.request {
+    flex-basis: 28%;
+    margin: 1em;
+    padding: 1em;
+    border: 1.5px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 60%;
+    align-items: center;
+    margin-left: 20%;
+    background-color: rgba(111, 131, 171, 0.694);
+  }

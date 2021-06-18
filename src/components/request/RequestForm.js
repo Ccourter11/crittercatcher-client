@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { RequestContext } from "./RequestProvider.js"
 import { useHistory, useParams } from 'react-router-dom'
-
+import "./Request.css"
 
 export const RequestForm = () => {
     const history = useHistory()
