@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { RequestContext } from "./RequestProvider.js"
 import { useHistory } from "react-router-dom"
+import Button from 'react-bootstrap/Button'
+import "./Request.css"
 
 export const RequestList = () => {
     const { requests, getRequests, deleteRequest } = useContext(RequestContext)
@@ -21,11 +23,11 @@ export const RequestList = () => {
 
     return (
         <article className="requests">
-            <button className="btn btn-2 btn-sep icon-create"
+            <Button variant="success" className="btn btn-2 btn-sep icon-create"
                             onClick={() => {
                                 history.push({ pathname: `/requests/new` })
                             }}
-                        >New Request</button>
+                        >New Request</Button>
                         
             {
                 requests.map(request => {
@@ -35,11 +37,11 @@ export const RequestList = () => {
                         <div className="request__description">Description: {request.description} </div>
                         <div className="request__location">Location: {request.location}</div>
                         <div className="request__edit">
-                             <button className="btn btn-3"
+                             <Button variant="warning" className="btn btn-3"
                                     onClick={() => history.push(`/requests/${request.id}/edit`)}
-                                    >Edit</button>
+                                    >Edit</Button>
                         </div>
-                        <button id={`request--${request.id}`} onClick={handleDelete}>Delete Request</button>
+                        <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete}>Delete Request</Button>
                         
                     </section>
                 })

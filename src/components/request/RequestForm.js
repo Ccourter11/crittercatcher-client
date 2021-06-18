@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { RequestContext } from "./RequestProvider.js"
 import { useHistory, useParams } from 'react-router-dom'
-import "./Request.css"
+// import "./Request.css"
 import Button from 'react-bootstrap/Button'
 
 export const RequestForm = () => {
@@ -125,7 +125,7 @@ export const RequestForm = () => {
             </fieldset>
             {
             (requestId)
-            ? <Button variant="secondary" type="submit"
+            ? <Button type="submit" variant="warning"
             onClick={evt => {
                 evt.preventDefault()
                 editRequests({
@@ -141,7 +141,7 @@ export const RequestForm = () => {
             }     
             className="btn btn-primary">Edit</Button>
                     :           
-            <Button type="submit"
+            <Button variant="success" type="submit"
                 onClick={evt => {
                     // Prevent form from being submitted
                     evt.preventDefault()
@@ -159,7 +159,7 @@ export const RequestForm = () => {
                     createRequests(request)
                         .then(() => history.push("/requests"))
                 }}
-                className="btn btn-primary">Create</Button>
+                className="btn btn-primary">Save</Button>
                 }
         </form>
     )
