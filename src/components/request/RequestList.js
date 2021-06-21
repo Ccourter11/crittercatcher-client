@@ -37,16 +37,17 @@ export const RequestList = () => {
                         <div className="request__title"><strong>Title:</strong> {request.title}</div>
                         <div className="request__description"><strong>Description:</strong> {request.description} </div>
                         <div className="request__location"><strong>Location:</strong> {request.location}</div>
-                        <div className="request__time"><strong>Time:</strong> {moment(request.datetime).format('LT')}</div>   
-                        <div className="request__time"><strong>Date:</strong> {moment(request.datetime).format('L')}</div>   
+                        {/* <div className="request__time"><strong>Time:</strong> {moment(new Date()).format('YYYY-MM-DDTHH:mm')}</div>    */}
+                        <div className="request__time"><strong>Date & Time:</strong> {moment(request.datetime).format('MMMM Do YYYY, h:mm:ss a')}</div>   
+                        
                         
 
                         <div className="request__edit">
-                             <Button variant="warning" className="btn btn-3"
-                                    onClick={() => history.push(`/requests/${request.id}/edit`)}
-                                    >Edit</Button>
+                             <Button variant="secondary" className="btn btn-3"
+                                    onClick={() => history.push(`/requests/${request.id}/edit`)} 
+                                    size="sm">Edit</Button>
                         </div>
-                        <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete}>Delete Request</Button>
+                        <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button>
                         
                     </section>
                 })

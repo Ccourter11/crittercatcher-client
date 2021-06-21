@@ -20,7 +20,7 @@ export const NavBar = (props) => {
             <Nav className="navbar">
         {/* <ul className="navbar"> */}
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Homepage</Link>
+                <Link className="navbar__link" to="/">Home</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/services">Services</Link>
