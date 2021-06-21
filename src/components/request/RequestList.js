@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react"
 import { RequestContext } from "./RequestProvider.js"
 import { useHistory } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
-import "./Request.css"
+// import "./Request.css"
 import moment from "moment"
+import Card from 'react-bootstrap/Card'
 
 export const RequestList = () => {
     const { requests, getRequests, deleteRequest } = useContext(RequestContext)
@@ -23,6 +24,7 @@ export const RequestList = () => {
     }, [])
 
     return (
+        <div class="container">
         <article className="requests">
             <Button variant="success" className="btn btn-2 btn-sep icon-create"
                             onClick={() => {
@@ -34,24 +36,38 @@ export const RequestList = () => {
                 requests.map(request => {
                     return <section key={`request--${request.id}`} className="request">
                         
-                        <div className="request__title"><strong>Title:</strong> {request.title}</div>
-                        <div className="request__description"><strong>Description:</strong> {request.description} </div>
-                        <div className="request__location"><strong>Location:</strong> {request.location}</div>
-                        {/* <div className="request__time"><strong>Time:</strong> {moment(new Date()).format('YYYY-MM-DDTHH:mm')}</div>    */}
-                        <div className="request__time"><strong>Date & Time:</strong> {moment(request.datetime).format('MMMM Do YYYY, h:mm:ss a')}</div>   
+                        {/* <div className="request__title"><strong>Title:</strong> {request.title}</div> */}
+                        {/* <div className="request__description"><strong>Description:</strong> {request.description} </div>
+                        <div className="request__location"><strong>Location:</strong> {request.location}</div> */}
+                        <div className="request__time"><strong>Date:</strong> {moment(request.date).format('MMMM Do YYYY')}</div>   
                         
-                        
-
-                        <div className="request__edit">
+                        <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="" />
+                        <Card.Body>
+                            <Card.Title><strong>Title:</strong> {request.title}</Card.Title>
+                            <Card.Text><strong>Description:</strong> {request.description}</Card.Text>
+                            <Card.Text><strong>Location:</strong> {request.location}</Card.Text>
+                            <div className="request__edit">
                              <Button variant="secondary" className="btn btn-3"
                                     onClick={() => history.push(`/requests/${request.id}/edit`)} 
                                     size="sm">Edit</Button>
                         </div>
                         <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button>
+                        </Card.Body>
+                        </Card>
+                        
+
+                        {/* <div className="request__edit">
+                             <Button variant="secondary" className="btn btn-3"
+                                    onClick={() => history.push(`/requests/${request.id}/edit`)} 
+                                    size="sm">Edit</Button>
+                        </div> */}
+                        {/* <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button> */}
                         
                     </section>
                 })
             }
         </article>
+        </div>
     )
 }

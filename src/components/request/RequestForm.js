@@ -18,7 +18,7 @@ export const RequestForm = () => {
         title: "",
         description: "",
         location: "",
-        datetime: "",
+        date: "",
         requestorId: 0,
         categoryId: 0
     })
@@ -39,7 +39,7 @@ export const RequestForm = () => {
                     title: request.title,
                     description: request.description,
                     location: request.location,
-                    datetime: request.datetime,
+                    date: request.date,
                     category: request.category,
                     requestor: request.requestor
                 })}
@@ -93,9 +93,9 @@ export const RequestForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date: </label>
-                    <input type="datetime-local" id="datetime" name="datetime" required autoFocus className="form-control"
+                    <input type="date" id="date" name="date" required autoFocus className="form-control"
                     onChange={changeRequestState}
-                    value={currentRequest.datetime}/>
+                    value={currentRequest.date}/>
                 </div>
             </fieldset>
 
@@ -131,7 +131,7 @@ export const RequestForm = () => {
                     id: requestId,
                     // : currentGame.maker,
                     title: currentRequest.title,
-                    datetime: currentRequest.datetime,
+                    date: currentRequest.date,
                     description: currentRequest.description,
                     location: currentRequest.location,
                     categoryId: parseInt(currentRequest.categoryId)
@@ -150,7 +150,7 @@ export const RequestForm = () => {
                         // maker: currentGame.maker,
                         title: currentRequest.title,
                         description: currentRequest.description,
-                        datetime: currentRequest.datetime,
+                        date: currentRequest.date,
                         location: currentRequest.location,
                         categoryId: parseInt(currentRequest.categoryId)
                     }
