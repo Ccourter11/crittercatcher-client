@@ -36,6 +36,8 @@ export const RequestList = () => {
                         <div className="request__title">Title: {request.title}</div>
                         <div className="request__description">Description: {request.description} </div>
                         <div className="request__location">Location: {request.location}</div>
+                        <div className="request__datetime">Date: {request.date}</div>
+
                         <div className="request__edit">
                              <Button variant="warning" className="btn btn-3"
                                     onClick={() => history.push(`/requests/${request.id}/edit`)}

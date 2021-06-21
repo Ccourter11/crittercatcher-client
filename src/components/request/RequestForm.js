@@ -18,7 +18,7 @@ export const RequestForm = () => {
         title: "",
         description: "",
         location: "",
-        date: "",
+        datetime: "",
         requestorId: 0,
         categoryId: 0
     })
@@ -39,7 +39,7 @@ export const RequestForm = () => {
                     title: request.title,
                     description: request.description,
                     location: request.location,
-                    date: request.date,
+                    datetime: request.datetime,
                     category: request.category,
                     requestor: request.requestor
                 })}
@@ -93,19 +93,18 @@ export const RequestForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date: </label>
-                    <input type="date" name="date" required autoFocus className="form-control"
+                    <input type="datetime-local" id="datetime" name="datetime" required autoFocus className="form-control"
                     onChange={changeRequestState}
-                    value={currentRequest.date}/>
+                    value={currentRequest.datetime}/>
                 </div>
             </fieldset>
 
             {/* <fieldset>
                 <div className="form-group">
-                    <label htmlFor="requestor">Requestor: </label>
-                    <input type="text" name="maker" required autoFocus className="form-control"
-                    placeholder="Maker"
+                    <label htmlFor="requestor">Time: </label>
+                    <input type="time" name="time" required autoFocus className="form-control"
                     onChange={changeGameState}
-                    value={currentGame.maker}/>
+                    value={currentGame.time}/>
                 </div>
             </fieldset> */}
 
@@ -132,6 +131,7 @@ export const RequestForm = () => {
                     id: requestId,
                     // : currentGame.maker,
                     title: currentRequest.title,
+                    datetime: currentRequest.datetime,
                     description: currentRequest.description,
                     location: currentRequest.location,
                     categoryId: parseInt(currentRequest.categoryId)
@@ -150,7 +150,7 @@ export const RequestForm = () => {
                         // maker: currentGame.maker,
                         title: currentRequest.title,
                         description: currentRequest.description,
-                        date: currentRequest.date,
+                        datetime: currentRequest.datetime,
                         location: currentRequest.location,
                         categoryId: parseInt(currentRequest.categoryId)
                     }
