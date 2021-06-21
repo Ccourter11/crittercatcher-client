@@ -19,7 +19,7 @@ export const ApplicationViews = () => {
             
             <RequestProvider>
 
-                <Route path="/requests">
+                <Route exact path="/requests">
                    <RequestList />
                 </Route>
 
@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
                     <RequestForm />
                 </Route>
 
-                <Route path="/services">
+                <Route exact path="/services">
                    <ServiceList />
                 </Route>
 
