@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
 import { RequestContext } from "./RequestProvider.js"
 import { useHistory, useParams } from 'react-router-dom'
-
+// import "./Request.css"
+import Button from 'react-bootstrap/Button'
 
 export const RequestForm = () => {
     const history = useHistory()
@@ -92,7 +93,7 @@ export const RequestForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date: </label>
-                    <input type="date" name="date" required autoFocus className="form-control"
+                    <input type="date" id="date" name="date" required autoFocus className="form-control"
                     onChange={changeRequestState}
                     value={currentRequest.date}/>
                 </div>
@@ -100,11 +101,10 @@ export const RequestForm = () => {
 
             {/* <fieldset>
                 <div className="form-group">
-                    <label htmlFor="requestor">Requestor: </label>
-                    <input type="text" name="maker" required autoFocus className="form-control"
-                    placeholder="Maker"
+                    <label htmlFor="requestor">Time: </label>
+                    <input type="time" name="time" required autoFocus className="form-control"
                     onChange={changeGameState}
-                    value={currentGame.maker}/>
+                    value={currentGame.time}/>
                 </div>
             </fieldset> */}
 
@@ -124,13 +124,14 @@ export const RequestForm = () => {
             </fieldset>
             {
             (requestId)
-            ? <button type="submit"
+            ? <Button type="submit" variant="warning"
             onClick={evt => {
                 evt.preventDefault()
                 editRequests({
                     id: requestId,
                     // : currentGame.maker,
                     title: currentRequest.title,
+                    date: currentRequest.date,
                     description: currentRequest.description,
                     location: currentRequest.location,
                     categoryId: parseInt(currentRequest.categoryId)
@@ -138,9 +139,9 @@ export const RequestForm = () => {
                 history.push("/requests")
             }
             }     
-            className="btn btn-primary">Edit</button>
+            className="btn btn-primary">Edit</Button>
                     :           
-            <button type="submit"
+            <Button variant="success" type="submit"
                 onClick={evt => {
                     // Prevent form from being submitted
                     evt.preventDefault()
@@ -158,7 +159,7 @@ export const RequestForm = () => {
                     createRequests(request)
                         .then(() => history.push("/requests"))
                 }}
-                className="btn btn-primary">Create</button>
+                className="btn btn-primary">Save</Button>
                 }
         </form>
     )

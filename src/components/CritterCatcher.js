@@ -4,6 +4,7 @@ import { Register } from "./auth/Register"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
 import { Logout } from "./auth/LogOut"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export function CritterCatcher() {
     return <>
