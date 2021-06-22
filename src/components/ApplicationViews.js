@@ -56,9 +56,7 @@ export const ApplicationViews = () => {
 
                 <Route exact path="/reviews/edit/:reviewId(\d+)">
                      <ReviewForm />
-                </Route
-            
-
+                </Route>
 
             </ReviewProvider>
         </main>

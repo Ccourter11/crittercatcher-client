@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { ReviewContext } from "./ReviewProvider"
 
-export const CategoryDetail = () => {
-    const { getReviews, getReviewById, deleteReview, updateReview } = useContext(CategoryContext)
+export const ReviewDetail = () => {
+    const { getReviews, getReviewById, deleteReview, updateReview } = useContext(ReviewContext)
     const [reviews, setReviews] = useState({})
     const [deleteModalOpen, setDeleteModalOpen] = useState(false)
     const { reviewId } = useParams()
@@ -25,7 +25,7 @@ export const CategoryDetail = () => {
     }, [])
 
     useEffect(() => {
-        getReviewsById(reviewId)
+        getReviewById(reviewId)
             .then((response) => {
                 setReviews(response)
             })
@@ -34,12 +34,12 @@ export const CategoryDetail = () => {
     return (
         <>
             <section className="review">
-                <div className="reviewLabel">Review: {review?.label}</div>
+                <div className="reviewLabel">Review: {reviews?.label}</div>
                 <button className="btn btn-primary" onClick={confirmDelete}>Delete Review</button>
-                <button className="btn btn-primary" onClick={() => { history.push(`/reviews/edit/${review?.id}`) }}>Edit</button>
+                <button className="btn btn-primary" onClick={() => { history.push(`/reviews/edit/${reviews?.id}`) }}>Edit</button>
             </section>
 
-            <dialog open={deleteModalOpen}>{`Are you sure you want to delete ${review?.label}?`}
+            <dialog open={deleteModalOpen}>{`Are you sure you want to delete ${reviews?.label}?`}
                 <button className="confirmDeleteButton" onClick={handleDelete}> Yes </button>
                 <button className="closeModalButton" onClick={() => setDeleteModalOpen(false)}> X </button>
             </dialog>

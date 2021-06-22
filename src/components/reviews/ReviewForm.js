@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router'
 import { ReviewContext } from './ReviewProvider'
 
 export const ReviewForm = () => {
-    const { getReviews, addReview, getReviewById, updateReview } = useContext(CategoryContext)
+    const { getReviews, addReview, getReviewById, updateReview } = useContext(ReviewContext)
     const { reviewId } = useParams()
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory()

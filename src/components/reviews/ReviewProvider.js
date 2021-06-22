@@ -41,7 +41,7 @@ export const ReviewProvider = (props) => {
     }
 
     const updateReview = review => {
-        return fetch(`http://localhost:8088/reviews/${reviewId}`, {
+        return fetch(`http://localhost:8088/reviews/${review.Id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
