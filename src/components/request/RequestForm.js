@@ -8,12 +8,8 @@ export const RequestForm = () => {
     const history = useHistory()
     const {  request, categories, getCategories, createRequests, getRequestById, editRequests } = useContext(RequestContext)
     const {requestId} = useParams()
+    
 
-    /*
-        Since the input fields are bound to the values of
-        the properties of this state variable, you need to
-        provide some default values.
-    */
     const [currentRequest, setCurrentRequest] = useState({
         title: "",
         description: "",
@@ -23,10 +19,6 @@ export const RequestForm = () => {
         categoryId: 0
     })
 
-    /*
-        Get category type on initialization so that the <select>
-        element presents category size choices to the user.
-    */
     useEffect(() => {
         getCategories()
     }, [])
@@ -40,7 +32,7 @@ export const RequestForm = () => {
                     description: request.description,
                     location: request.location,
                     date: request.date,
-                    category: request.category,
+                    categoryId: request.category.id,
                     requestor: request.requestor
                 })}
             )
@@ -50,7 +42,12 @@ export const RequestForm = () => {
     //when something changes, save it with 
     const changeRequestState = (event) => {
         const newRequestState = { ...currentRequest} 
-        newRequestState[event.target.name] = event.target.value
+        
+        if(event.target.name === "categoryId") {
+            newRequestState[event.target.name] = parseInt(event.target.value)
+        } else {
+            newRequestState[event.target.name] = event.target.value
+        }
         // update state
         setCurrentRequest(newRequestState) 
     }
@@ -99,24 +96,16 @@ export const RequestForm = () => {
                 </div>
             </fieldset>
 
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="requestor">Time: </label>
-                    <input type="time" name="time" required autoFocus className="form-control"
-                    onChange={changeGameState}
-                    value={currentGame.time}/>
-                </div>
-            </fieldset> */}
 
             <fieldset>
+                {console.log(currentRequest)}
                 <div className="form-group">
                     <label htmlFor="category">Category: </label>
                      <select value={currentRequest.categoryId} name="categoryId" className="form-control" onChange={changeRequestState}>
-                        <option value="0">Select a size</option>
+                        <option value="0">Select a category</option>
                         {categories.map(cat => (
                              <option key={cat.id} value={cat.id}>
                             {cat.label}
-                            {/* because this is react, im looping over something and creating a jsx element, i do need a key, a key needs to be a unquie identifier bc we already have an id that acts like a unique identifier, we use the id as the key. the value of of option tag is going to beid bc thats what we want to capture and then what the user sees is going to be the name  */}
                             </option>
                         ))}
                     </select>

@@ -65,6 +65,8 @@ export const RequestProvider = (props) => {
             .then(res => res.json())
     }
 
+    
+
     const deleteRequest = (requestId) => {
         return fetch(`http://localhost:8000/requests/${requestId}`, {
             method: "DELETE",

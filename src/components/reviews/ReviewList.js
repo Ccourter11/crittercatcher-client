@@ -22,7 +22,7 @@ export const ReviewList = () => {
           <div className="Reviews">
             {
             reviews.map(review => {
-              return <ReviewCard key={review.id} reviewInstance={reviews} />
+              return <ReviewCard key={review.id} reviewInstance={review} />
             })
             }
             </div>
