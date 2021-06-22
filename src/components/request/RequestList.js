@@ -35,18 +35,14 @@ export const RequestList = () => {
             {
                 requests.map(request => {
                     return <section key={`request--${request.id}`} className="request">
-                        
-                        {/* <div className="request__title"><strong>Title:</strong> {request.title}</div> */}
-                        {/* <div className="request__description"><strong>Description:</strong> {request.description} </div>
-                        <div className="request__location"><strong>Location:</strong> {request.location}</div> */}
-                        <div className="request__time"><strong>Date:</strong> {moment(request.date).format('MMMM Do YYYY')}</div>   
-                        
+                                                
                         <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src="" />
                         <Card.Body>
                             <Card.Title><strong>Title:</strong> {request.title}</Card.Title>
                             <Card.Text><strong>Description:</strong> {request.description}</Card.Text>
                             <Card.Text><strong>Location:</strong> {request.location}</Card.Text>
+                            <Card.Text><strong>Date:</strong> {moment(request.date).format('MMMM Do YYYY')}</Card.Text>
                             <div className="request__edit">
                              <Button variant="secondary" className="btn btn-3"
                                     onClick={() => history.push(`/requests/${request.id}/edit`)} 
@@ -55,14 +51,6 @@ export const RequestList = () => {
                         <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button>
                         </Card.Body>
                         </Card>
-                        
-
-                        {/* <div className="request__edit">
-                             <Button variant="secondary" className="btn btn-3"
-                                    onClick={() => history.push(`/requests/${request.id}/edit`)} 
-                                    size="sm">Edit</Button>
-                        </div> */}
-                        {/* <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button> */}
                         
                     </section>
                 })
