@@ -5,6 +5,10 @@ import { RequestProvider } from "./request/RequestProvider"
 import { RequestList } from "./request/RequestList"
 import { RequestForm } from "./request/RequestForm"
 import { ServiceList } from './services/ServiceList'
+import { ReviewProvider } from "./reviews/ReviewProvider"
+import { ReviewList } from "./reviews/ReviewList"
+import { ReviewForm } from "./reviews/ReviewForm"
+import { ReviewDetail } from "./reviews/ReviewDetail"
 
 export const ApplicationViews = () => {
     return (
@@ -35,6 +39,28 @@ export const ApplicationViews = () => {
                 </Route>
 
             </RequestProvider>
+
+            <ReviewProvider>
+
+                <Route exact path="/reviews"> 
+                    <ReviewList />
+                </Route>
+
+                <Route exact path="/reviews/create">
+                    <ReviewForm />
+                </Route>
+
+                <Route exact path="/reviews/detail/:reviewId(\d+)">
+                    <ReviewDetail />
+                </Route>
+
+                <Route exact path="/reviews/edit/:reviewId(\d+)">
+                     <ReviewForm />
+                </Route
+            
+
+
+            </ReviewProvider>
         </main>
         </>
     )
