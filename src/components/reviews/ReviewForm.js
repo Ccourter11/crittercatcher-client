@@ -19,10 +19,10 @@ export const ReviewForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (reviewId) {
-            updateReview({ id: reviewId, label: review })
+            updateReview({ id: reviewId, review: review })
                 .then(() => history.push(`/reviews`))
         } else {
-            addReview({ label: review })
+            addReview({ review: review })
             history.push("/reviews")
         }
     }
@@ -36,7 +36,7 @@ export const ReviewForm = () => {
             if (reviewId) {
                 getReviewById(reviewId)
                     .then(review => {
-                        setReview(review.label)
+                        setReview(review.review)
                         setIsLoading(false)
                     })
             } else {
@@ -55,7 +55,7 @@ export const ReviewForm = () => {
                         <label htmlFor="reviewLabel">Review</label>
                         <input type="text"
                             placeholder={reviewId ? review : "Enter new review"}
-                            id="reviewLabel"
+                            id="review"
                             onChange={handleInputChange}
                             className="form-control"
                             value={review}></input>

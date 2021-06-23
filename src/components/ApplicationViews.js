@@ -23,6 +23,7 @@ export const ApplicationViews = () => {
             </Route>
             
             <RequestProvider>
+            <ReviewProvider>
 
                 <Route exact path="/requests">
                    <RequestList />
@@ -43,10 +44,6 @@ export const ApplicationViews = () => {
                    <ServiceList />
                 </Route>
 
-            </RequestProvider>
-
-            <ReviewProvider>
-
                 <Route exact path="/reviews"> 
                     <ReviewList />
                 </Route>
@@ -63,7 +60,10 @@ export const ApplicationViews = () => {
                      <ReviewForm />
                 </Route>
 
-            </ReviewProvider>
+                </ReviewProvider>
+            </RequestProvider>
+
+
         </main>
         </>
     )

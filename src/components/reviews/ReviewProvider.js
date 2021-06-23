@@ -20,7 +20,8 @@ export const ReviewProvider = (props) => {
         return fetch("http://localhost:8000/reviews", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
             },
             body: JSON.stringify(reviewObj)
         })
@@ -44,7 +45,8 @@ export const ReviewProvider = (props) => {
         return fetch(`http://localhost:8088/reviews/${review.Id}`, {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            
           },
           body: JSON.stringify(review)
         })
