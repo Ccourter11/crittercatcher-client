@@ -17,7 +17,7 @@ export const ReviewList = () => {
     return (
       <>
         <section className="ReviewList">
-          <h1> Review List </h1>
+          <h1>My Review </h1>
           <button className="btn btn-primary" onClick={() => history.push("/reviews/create")}> Create Review </button>
           <div className="Reviews">
             {

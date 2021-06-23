@@ -8,7 +8,8 @@ import { ServiceList } from './services/ServiceList'
 import { ReviewProvider } from "./reviews/ReviewProvider"
 import { ReviewList } from "./reviews/ReviewList"
 import { ReviewForm } from "./reviews/ReviewForm"
-import { ReviewDetail } from "./reviews/ReviewDetail"
+import { RequestDetail } from "./request/RequestDetail"
+
 
 export const ApplicationViews = () => {
     return (
@@ -34,6 +35,10 @@ export const ApplicationViews = () => {
                     <RequestForm />
                 </Route>
 
+                <Route path='/requests/:requestId(\d+)'>
+                      <RequestDetail/>
+                </Route>
+
                 <Route exact path="/services">
                    <ServiceList />
                 </Route>
@@ -50,9 +55,9 @@ export const ApplicationViews = () => {
                     <ReviewForm />
                 </Route>
 
-                <Route exact path="/reviews/detail/:reviewId(\d+)">
+                {/* <Route exact path="/reviews/detail/:reviewId(\d+)">
                     <ReviewDetail />
-                </Route>
+                </Route> */}
 
                 <Route exact path="/reviews/edit/:reviewId(\d+)">
                      <ReviewForm />
