@@ -3,12 +3,13 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 import { RequestContext } from './RequestProvider'
 import { ReviewContext } from '../reviews/ReviewProvider'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 export const RequestDetail = () => {
     const history = useHistory()
     const {requestId} = useParams()
     const {getRequestById} = useContext(RequestContext)
-    const { addReview, reviews, getReviewById, updateReview } = useContext(ReviewContext)
+    const { addReview, reviews, getReviewById, updateReview, deleteReview } = useContext(ReviewContext)
     const [request, setRequest] = useState({})
     const [requests, setRequests] = useState([])
     const [hidden, setHidden] = useState(true)
@@ -42,24 +43,41 @@ export const RequestDetail = () => {
         setHidden(!hidden)
     } 
 
+    const handleDelete = (event) => { 
+        const [prefix, id] = event.target.id.split("--")
+        deleteReview(id)
+        .then(() => {
+        history.push("/reviews")
+      })
+    }
+
     return (
         <>
-        <section className="review">
-        <h1>{request.reviews?.map(review =>
+        <Card>
+        <Card.Header><strong>Review</strong></Card.Header>
+        <Card.Body>
+            <blockquote className="blockquote mb-0">
+            <h1>{request.reviews?.map(review =>
             <section key={review.id}>
                 {console.log(review)}
-                <div>First Name: {review.requestor.user.first_name}</div>
-                <div>Last Name: {review.requestor.user.last_name}</div>
+                <div>Name: {review.requestor.user.first_name + ' ' + review.requestor.user.last_name}</div>
                 <div>Review: {review.review}</div>
+                <Button variant="danger" id={`review--${review.id}`} onClick={handleDelete} size="sm">Delete Review</Button>
+                {/* <Button variant="secondary" className="btn btn-3"
+                                    onClick={() => history.push(`/reviews/${review.id}/edit`)} 
+                                    size="sm">Edit</Button> */}
             </section>
             )}</h1>
-        {/* <Button variant='warning' onClick={() => history.push(`/reviews/edit/${requests.id}`)}>Edit Review</Button> */}
+            </blockquote>
+        </Card.Body>
+        </Card>
+        <section className="review">
         <Button onClick={handleCreate}>Create</Button>
+        
         </section>
 
         <section className="review_form" hidden={hidden}>
         <form className="reviewForm">
-            {/* <h2>"Create Review"</h2> */}
             <fieldset className="form">
                 <div className="form-group">
                     <label htmlFor="reviewLabel"></label>

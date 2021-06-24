@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button'
 import moment from "moment"
 import Card from 'react-bootstrap/Card'
 
+
+
 export const RequestList = () => {
     const { requests, getRequests, deleteRequest } = useContext(RequestContext)
     const [ request, setRequests ] = useState({})
@@ -44,6 +46,7 @@ export const RequestList = () => {
                             <Card.Text><strong>Description:</strong> {request.description}</Card.Text>
                             <Card.Text><strong>Location:</strong> {request.location}</Card.Text>
                             <Card.Text><strong>Date:</strong> {moment(request.date).format('MMMM Do YYYY')}</Card.Text>
+                            <div className="image is-4by4"><img src={request.image_url}/></div>
                             <Card.Link href={`/requests/${request.id}`}><strong>Reviews</strong></Card.Link>
                             <div className="request__edit">
                              <Button variant="secondary" className="btn btn-3"
@@ -51,6 +54,7 @@ export const RequestList = () => {
                                     size="sm">Edit</Button>
                         </div>
                         <Button variant="danger" id={`request--${request.id}`} onClick={handleDelete} size="sm">Delete Request</Button>
+                        
                         </Card.Body>
                         </Card>
                         

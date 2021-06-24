@@ -8,6 +8,7 @@ export const RequestForm = () => {
     const history = useHistory()
     const {  request, categories, getCategories, createRequests, getRequestById, editRequests } = useContext(RequestContext)
     const {requestId} = useParams()
+    const [image, setImage] = useState([])
     
 
     const [currentRequest, setCurrentRequest] = useState({
@@ -15,6 +16,7 @@ export const RequestForm = () => {
         description: "",
         location: "",
         date: "",
+        image_url: "",
         requestorId: 0,
         categoryId: 0
     })
@@ -33,7 +35,8 @@ export const RequestForm = () => {
                     location: request.location,
                     date: request.date,
                     categoryId: request.category.id,
-                    requestor: request.requestor
+                    requestor: request.requestor,
+                    image_url: request.image_url
                 })}
             )
         }
@@ -50,6 +53,22 @@ export const RequestForm = () => {
         }
         // update state
         setCurrentRequest(newRequestState) 
+    }
+
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    }
+
+    const createPicString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            // Update a component state variable to the value of base64ImageString
+            debugger
+            const newImageState = { ...currentRequest }
+            newImageState.image_url = base64ImageString
+            setCurrentRequest(newImageState)
+        });
     }
 
     return (
@@ -95,7 +114,16 @@ export const RequestForm = () => {
                     value={currentRequest.date}/>
                 </div>
             </fieldset>
-
+            
+            <fieldset>
+            <div className="form-group">
+                    <label className="label">Image:</label>
+                    <div className="control">
+                        <input type="file" id="image_url" onChange={createPicString} />
+                        <input type="hidden" id="image_url" value={image} />
+                    </div>
+                </div>
+            </fieldset>
 
             <fieldset>
                 {console.log(currentRequest)}
@@ -123,6 +151,7 @@ export const RequestForm = () => {
                     date: currentRequest.date,
                     description: currentRequest.description,
                     location: currentRequest.location,
+                    image_url: currentRequest.image_url,
                     categoryId: parseInt(currentRequest.categoryId)
                 })
                 history.push("/requests")
@@ -141,6 +170,7 @@ export const RequestForm = () => {
                         description: currentRequest.description,
                         date: currentRequest.date,
                         location: currentRequest.location,
+                        image_url: currentRequest.image_url,
                         categoryId: parseInt(currentRequest.categoryId)
                     }
 
