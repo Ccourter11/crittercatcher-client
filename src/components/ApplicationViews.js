@@ -9,6 +9,7 @@ import { ReviewProvider } from "./reviews/ReviewProvider"
 import { ReviewList } from "./reviews/ReviewList"
 import { ReviewForm } from "./reviews/ReviewForm"
 import { RequestDetail } from "./request/RequestDetail"
+import { ReviewDetail } from "./reviews/ReviewDetail"
 
 
 export const ApplicationViews = () => {
@@ -52,11 +53,11 @@ export const ApplicationViews = () => {
                     <ReviewForm />
                 </Route>
 
-                {/* <Route exact path="/reviews/detail/:reviewId(\d+)">
+                <Route exact path="/reviews/:reviewId(\d+)">
                     <ReviewDetail />
-                </Route> */}
+                </Route>
 
-                <Route exact path="/reviews/edit/:reviewId(\d+)">
+                <Route exact path="/reviews/:reviewId(\d+)/edit">
                      <ReviewForm />
                 </Route>
 

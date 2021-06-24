@@ -63,6 +63,9 @@ export const RequestDetail = () => {
                 <div>Name: {review.requestor.user.first_name + ' ' + review.requestor.user.last_name}</div>
                 <div>Review: {review.review}</div>
                 <Button variant="danger" id={`review--${review.id}`} onClick={handleDelete} size="sm">Delete Review</Button>
+                {/* <Button variant="secondary" className="btn btn-3"
+                                    onClick={() => history.push(`/reviews/${review.id}/edit`)} 
+                                    size="sm">Edit</Button> */}
             </section>
             )}</h1>
             </blockquote>
