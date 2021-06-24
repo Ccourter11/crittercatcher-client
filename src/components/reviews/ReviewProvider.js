@@ -29,14 +29,17 @@ export const ReviewProvider = (props) => {
     }
 
     
-    const getReviewById = (id) => {
-        return fetch(`http://localhost:8000/reviews/${id}`)
+    const getReviewById = (reviewId) => {
+        return fetch(`http://localhost:8000/reviews/${reviewId}`)
             .then(res => res.json())
     }
 
-    const deleteReview = reviewId => {
-        return fetch(`http://localhost:8000/reviews/${reviewId}`, {
-            method: "DELETE"
+    const deleteReview = review => {
+        return fetch(`http://localhost:8000/reviews/${review.id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`
+            }
         })
             .then(getReviews)
     }
