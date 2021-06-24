@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./Auth.css"
 import { useHistory } from "react-router"
+import Button from 'react-bootstrap/Button'
 
 
 export const Login = props => {
@@ -57,7 +58,7 @@ export const Login = props => {
                     <fieldset style={{
                         textAlign:"center"
                     }}>
-                        <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
+                        <Button variant="success" className="btn btn-1 btn-sep icon-send" type="submit">Sign In</Button>
                     </fieldset>
                 </form>
             </section>
