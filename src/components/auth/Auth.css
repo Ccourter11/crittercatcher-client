@@ -47,9 +47,12 @@ fieldset {
 }
 
 .form--login {
+    background-size: cover;
+    background-position-x: center;
+    background-image: url('./foxraccoon.jpg');
     z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
+    min-height: 40rem;
+    min-width: 57rem;
     padding: 0 5rem;
     background-color: hsla(0,0%,100%,0.75);
     background-blend-mode: overlay;
