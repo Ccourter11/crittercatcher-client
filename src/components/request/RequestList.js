@@ -46,6 +46,7 @@ export const RequestList = () => {
                             <Card.Text><strong>Description:</strong> {request.description}</Card.Text>
                             <Card.Text><strong>Location:</strong> {request.location}</Card.Text>
                             <Card.Text><strong>Date:</strong> {moment(request.date).format('MMMM Do YYYY')}</Card.Text>
+                            <div className="image is-4by4"><img src={request.image_url}/></div>
                             <Card.Link href={`/requests/${request.id}`}><strong>Reviews</strong></Card.Link>
                             <div className="request__edit">
                              <Button variant="secondary" className="btn btn-3"
