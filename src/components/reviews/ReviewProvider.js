@@ -34,8 +34,8 @@ export const ReviewProvider = (props) => {
             .then(res => res.json())
     }
 
-    const deleteReview = review => {
-        return fetch(`http://localhost:8000/reviews/${review.id}`, {
+    const deleteReview = reviewId => {
+        return fetch(`http://localhost:8000/reviews/${reviewId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("critter-catcher_token")}`

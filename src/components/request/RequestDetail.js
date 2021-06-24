@@ -60,31 +60,21 @@ export const RequestDetail = () => {
             <h1>{request.reviews?.map(review =>
             <section key={review.id}>
                 {console.log(review)}
-                <div>First Name: {review.requestor.user.first_name}</div>
-                <div>Last Name: {review.requestor.user.last_name}</div>
+                <div>Name: {review.requestor.user.first_name + ' ' + review.requestor.user.last_name}</div>
                 <div>Review: {review.review}</div>
+                <Button variant="danger" id={`review--${review.id}`} onClick={handleDelete} size="sm">Delete Review</Button>
             </section>
             )}</h1>
             </blockquote>
         </Card.Body>
         </Card>
         <section className="review">
-        {/* <h1>{request.reviews?.map(review =>
-            <section key={review.id}>
-                {console.log(review)}
-                <div>First Name: {review.requestor.user.first_name}</div>
-                <div>Last Name: {review.requestor.user.last_name}</div>
-                <div>Review: {review.review}</div>
-            </section>
-            )}</h1> */}
-        {/* <Button variant='warning' onClick={() => history.push(`/reviews/edit/${requests.id}`)}>Edit Review</Button> */}
         <Button onClick={handleCreate}>Create</Button>
-        <Button variant="danger" id={`review--${review.id}`} onClick={handleDelete} size="sm">Delete Review</Button>
+        
         </section>
 
         <section className="review_form" hidden={hidden}>
         <form className="reviewForm">
-            {/* <h2>"Create Review"</h2> */}
             <fieldset className="form">
                 <div className="form-group">
                     <label htmlFor="reviewLabel"></label>
